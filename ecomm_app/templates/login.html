@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Login</title>
+</head>
+
+<body style="margin: 0; font-family: Arial; background-color: #f2f2f2;">
+
+    <div style="width: 350px; margin: 100px auto; padding: 30px;
+                background-color: white; border-radius: 10px;
+                box-shadow: 0 0 10px gray;">
+
+        <h2 style="text-align: center; color: #333;">Login</h2>
+
+        <form method="POST" action ="/login/">
+
+            {% csrf_token %}
+
+            <label>Username</label>
+
+            <input type="text" name="username"
+                placeholder="Enter your username" required
+                style="width: 100%; padding: 10px; margin: 10px 0 20px;
+                box-sizing: border-box;">
+
+            <label>Password</label>
+
+            <input type="password" name="login_password"
+                placeholder="Enter your password" required
+                style="width: 100%; padding: 10px; margin: 10px 0 20px;
+                box-sizing: border-box;">
+            
+            <!-- <label>User Role</label>
+            
+            <input type="user_role" name="user_role" placeholder="Enter your role"
+                style="width: 100%; padding: 10px; margin: 10px 0 20px;
+                box-sizing: border-box;"> -->
+
+            <button type="submit"
+                style="width: 100%; padding: 12px;
+                background-color: #222; color: white;
+                border: none; border-radius: 5px;
+                cursor: pointer;">
+                Login
+            </button>
+
+        </form>
+
+        <p style="text-align: center; margin-top: 20px;">
+            Don't have an account?
+            <a href="/register/"
+               style="color: blue; text-decoration: none;">
+                Register
+            </a>
+        </p>
+        <p>{{error}}</p>
+
+    </div>
+
+</body>
+</html>
+```

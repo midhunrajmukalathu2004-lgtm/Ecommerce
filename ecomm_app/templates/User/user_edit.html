@@ -1,0 +1,65 @@
+{% extends 'User/user_home.html'%}
+{% block content %}
+<head>
+    <title>Edit Profile</title>
+</head>
+
+<body style="margin:0; padding:0; font-family:Arial, sans-serif; background:#f4f6f9;">
+
+    <div style="display:flex; justify-content:center; align-items:center; min-height:100vh;">
+
+        <div style="background:white; width:350px; padding:35px;
+                    border-radius:12px; box-shadow:0 4px 15px rgba(0,0,0,0.1);">
+
+            <h2 style="text-align:center; color:#333; margin-bottom:30px;">
+                Edit Profile ✏️
+            </h2>
+
+            <form method="POST">
+                {% csrf_token %}
+
+                <label style="color:#444; font-weight:bold;">Full Name</label>
+                <input type="text" name="name" value="{{ user.name }}"
+                       required
+                       style="width:100%; padding:12px; margin:10px 0 20px;
+                              border:1px solid #ccc; border-radius:6px;
+                              box-sizing:border-box;">
+
+                <label style="color:#444; font-weight:bold;">Email</label>
+                <input type="email" name="email" value="{{ user.email }}"
+                       required
+                       style="width:100%; padding:12px; margin:10px 0 20px;
+                              border:1px solid #ccc; border-radius:6px;
+                              box-sizing:border-box;">
+
+                <label style="color:#444; font-weight:bold;">Phone Number</label>
+                <input type="text" name="phone" value="{{ user.phone }}"
+                       required
+                       style="width:100%; padding:12px; margin:10px 0 25px;
+                              border:1px solid #ccc; border-radius:6px;
+                              box-sizing:border-box;">
+
+                <button type="submit"
+                        style="width:100%; padding:12px; background:#28a745;
+                               color:white; border:none; border-radius:6px;
+                               font-weight:bold; cursor:pointer;">
+                    Update Profile
+                </button>
+
+                <a href="/userprofile/"
+                   style="display:block; text-align:center; text-decoration:none;
+                          background:#6c757d; color:white; padding:12px;
+                          border-radius:6px; margin-top:15px; font-weight:bold;">
+                    Cancel
+                </a>
+
+            </form>
+
+        </div>
+
+    </div>
+
+</body>
+{% endblock %}
+
+</html>

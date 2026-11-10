@@ -1,0 +1,122 @@
+
+{% extends 'Admin/admin_home.html' %}
+{% block content %}
+
+<style>
+    .manage-container {
+        padding: 30px;
+        margin: 20px auto;
+        background: white;
+        border-radius: 12px;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+    }
+
+    .manage-container h2 {
+        color: #333;
+        margin-bottom: 25px;
+        font-size: 25px;
+        font-weight: 600;
+    }
+
+    .table-responsive {
+        overflow-x: auto;
+    }
+
+    .user-table {
+        width: 100%;
+        border-collapse: collapse;
+        text-align: left;
+    }
+
+    .user-table th {
+        background: #007bff;
+        color: white;
+        padding: 14px;
+        font-size: 14px;
+    }
+
+    .user-table td {
+        padding: 13px 14px;
+        border-bottom: 1px solid #eee;
+        color: #444;
+        font-size: 14px;
+    }
+
+    .user-table tr:hover {
+        background: #f5f8ff;
+    }
+
+    .edit-btn {
+        background: #198754;
+        color: white;
+        padding: 7px 13px;
+        text-decoration: none;
+        border-radius: 5px;
+        margin-right: 5px;
+        display: inline-block;
+    }
+
+    .delete-btn {
+        background: #dc3545;
+        color: white;
+        padding: 7px 13px;
+        text-decoration: none;
+        border-radius: 5px;
+        display: inline-block;
+    }
+
+    .edit-btn:hover {
+        background: #146c43;
+        color: white;
+    }
+
+    .delete-btn:hover {
+        background: #bb2d3b;
+        color: white;
+    }
+
+    .empty-message {
+        text-align: center;
+        padding: 20px;
+        color: #777;
+    }
+</style>
+
+<div class="manage-container">
+
+    <h2>Manage Users</h2>
+
+    <div class="table-responsive">
+
+        <table class="user-table">
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Phone</th>
+                <th>Action</th>
+            </tr>
+
+            {% for i in data %}
+            <tr>
+                <td>{{ i.id }}</td>
+                <td>{{ i.full_name }}</td>
+                <td>{{ i.email }}</td>
+                <td>{{ i.phone_no }}</td>
+                <td>
+                    <a href="/edit_user/{{ i.id }}/" class="edit-btn">Edit</a>
+                    <a href="/delete_user/{{ i.id }}/" class="delete-btn">Delete</a>
+                </td>
+            </tr>
+            {% empty %}
+            <tr>
+                <td colspan="5" class="empty-message">No users found</td>
+            </tr>
+            {% endfor %}
+        </table>
+
+    </div>
+
+</div>
+
+{% endblock %}
